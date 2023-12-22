@@ -1,19 +1,18 @@
-<!DOCTYPE HTML>
 <html>
     <head>
-        <meta charset="UTF-8">
+        <meta charset="UTF-8"/>
         <title>das wobble mding fuer tube</title>
         <!-- CDN -->
         <!-- Font Awesome -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
         <!-- jQuery -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <!-- jQuery UI -->
-        <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
+        <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css"/>
         <!-- Database Wrapper -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/dexie/1.5.1/dexie.min.js"></script>
         <!-- Semantic OwO -->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.10/semantic.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.10/semantic.min.css"/>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.10/semantic.min.js"></script>
         <!-- three.js -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/85/three.min.js"></script>
@@ -39,9 +38,9 @@
 
         <!-- Local -->
         <!-- Styles -->
-        <link rel="stylesheet" type="text/css" href="./css/main.css">
-        <link rel="stylesheet" type="text/css" href="./css/gui.css">
-        <link rel="stylesheet" type="text/css" href="./css/background.css">
+        <link rel="stylesheet" type="text/css" href="./css/main.css"/>
+        <link rel="stylesheet" type="text/css" href="./css/gui.css"/>
+        <link rel="stylesheet" type="text/css" href="./css/background.css"/>
         <!-- audio -->
         <script src="./js/audio/nodes.js"></script>
         <!-- math -->
@@ -80,14 +79,12 @@
         <div id="gui-full" class="overlay-container">
             <div class="vert-cen overlay-window" id="gui-full-holder">
                 <div class="absolute-center overlay-pane" id="controls">
-                    <div id="db-prev" class="page-control interactable fa fa-chevron-circle-left"
-                            onClick="Database.prevPage()" title="Previous page"></div>
-                    <div id="db-next" class="page-control interactable fa fa-chevron-circle-right"
-                            onClick="Database.nextPage()" title="Next page"></div>
+                    <div id="db-prev" class="page-control interactable fa fa-chevron-circle-left" onClick="Database.prevPage()" title="Previous page"></div>
+                    <div id="db-next" class="page-control interactable fa fa-chevron-circle-right" onClick="Database.nextPage()" title="Next page"></div>
                     <div onClick="GuiWrapper.closeGui();" class="boxclose fa fa-times-circle interactable"></div>
                     <div class="ui fluid action input inverted">
-                        <input type="text" readonly Value="Select Audio File">
-                        <input accept="audio/*" type="file" id="fileSelector">
+                        <input type="text" readonly value="Select Audio File"/>
+                        <input accept="audio/*" type="file" id="fileSelector"/>
                         <div id="upload-button" class="ui icon button interactable">
                             <span class="fa fa-plus"></span>
                         </div>
@@ -96,10 +93,10 @@
                     <div id="db-page-info">Page ??/??</div>
                     <div id="db-input">
                         <div class="ui input">
-                            <input type="text" id="field-artist" placeholder="Artist" disabled>
+                            <input type="text" id="field-artist" placeholder="Artist" disabled/>
                         </div>
                         <div class="ui input">
-                            <input type="text" id="field-title" placeholder="Title" disabled>
+                            <input type="text" id="field-title" placeholder="Title" disabled/>
                         </div>
                     </div>
                     <div id="db-controls">
@@ -115,37 +112,20 @@
             <div class="vert-cen overlay-window" id="about-full-holder">
                 <div class="absolute-center overlay-pane" id="about-pane">
                     <div onClick="GuiWrapper.closeAbout();" class="boxclose fa fa-times-circle interactable"></div>
-                    <div id="about-header">
-                        js.nation
-                    </div>
-                    <div id="about-content">
-                        <div>
-                            made with <span class="fa fa-heart"></span> by 
-                            <a href="//caseif.net" target="_blank" rel="noopener noreferrer">caseif</a> & 
-                            <a href="http://incept.online" target="_blank" rel="noopener noreferrer">incept</a>
-                        </div>
-                        <div>
-                            source available on
-                            <a href="//github.com/caseif/js.nation" target="_blank" rel="noopener noreferrer">github</a>
-                        </div>
-                        <div>
-                            <a href="technologies.html" target="_blank" rel="noopener noreferrer">technologies used</a>
-                        </div>
-                        <div>
-                            inspired by <a href="//nations.io/">the nations</a>
-                        </div>
-                        <hr>
+                    <div id="about-header"></div><div> <div><span class="fa fa-heart">&nbsp;</span><_marker></_marker><div id="about-header"></div></div>
+                        <div>&nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  </div>
+                        <hr/>
                         <div>
                             hotkeys
                         </div>
                         <div id="about-hotkeys">
-                            f &mdash; flip background
-                            <br>
-                            g &mdash; toggle spectrum glow
-                            <br>
-                            space &mdash; play/pause
-                            <br>
-                            escape &mdash; close overlay
+                            f — flip background
+                            <br/>
+                            g — toggle spectrum glow
+                            <br/>
+                            space — play/pause
+                            <br/>
+                            escape — close overlay
                         </div>
                     </div>
                 </div>
@@ -155,10 +135,8 @@
         <div id="welcome-full" class="overlay-container">
             <div class="vert-cen overlay-window" id="welcome-full-holder">
                 <div class="absolute-center overlay-pane" id="welcome-pane">
-                    <div id="welcome-content">
-                        welcome to js.nation!
-                        <br><br>
-                        to get started, click "view library" in the bottom-left corner and add a song.
+                    <div id="welcome-content">&nbsp;welcome to wobble ding für tube!&nbsp;<br/><br/>
+                        to get started, click &quot;view library&quot; in the bottom-left corner and add a song.
                     </div>
                 </div>
             </div>
@@ -169,8 +147,8 @@
                 <div class="absolute-center overlay-pane" id="welcome-noauto-pane">
                     <div id="welcome-noauto-content">
                         welcome to js.nation!
-                        <br><br>
-                        autoplay is disabled in your browser! click "view library" and select a song to begin.
+                        <br/><br/>
+                        autoplay is disabled in your browser! click &quot;view library&quot; and select a song to begin.
                     </div>
                 </div>
             </div>
@@ -185,8 +163,7 @@
 
         <div class="flex gui-part" id="gui-bottom">
             <!-- Left -->
-            <button class="ui button inverted transparent interactable" onclick="GuiWrapper.openGui();"
-                    id="view-database">View Library</button>
+            <button class="ui button inverted transparent interactable" onClick="GuiWrapper.openGui();" id="view-database">View Library</button>
             <!-- Center -->
             <div class="flex" id="audio-player">  
                 <div class="flex main-controls">
@@ -198,7 +175,11 @@
                 <span id="time" class="time">00:00</span>
                 <progress id="progressbar" class="flex-auto interactable" value="0" max="100"></progress>
                 <span id="mute" class="fa fa-volume-up interactable"></span>
-                <progress id="volume" class="flex-auto interactable" value="100" max="100"></progress>
+                <progress id="volume" class="flex-auto interactable" value="100" max="100"></progress></div>
+		
+		<p></p>
+		<p>based on js.nation by&nbsp; <a href="//caseif.net">caseif</a> &amp; 
+                            <a href="http://incept.online">incept</a></p><div class="flex">
             </div>
             <audio id="audio" onended="Database.playNextSong()"></audio>
             <!-- Right -->
@@ -211,14 +192,12 @@
             <canvas id="canvas" style="display: block;"></canvas>
         </div>
         <div id="background" class="lazyaf">
-            <img src="" class="bgleft" id="limg1" onerror="this.style.display='none'">
-            <img src="" class="bgright" id="limg2" onerror="this.style.display='none'">
+            <img src class="bgleft" id="limg1" onerror="this.style.display='none'"/>
+            <img src class="bgright" id="limg2" onerror="this.style.display='none'"/>
         </div>
         <div id="background" class="realbg">
-            <img src="" class="bgleft" id="bgimg1" onload="Background.fadeFullRes(this)"
-                    onerror="this.style.display='none'">
-            <img src="" class="bgright" id="bgimg2" onload="Background.fadeFullRes(this)"
-                    onerror="this.style.display='none'">
+            <img src class="bgleft" id="bgimg1" onload="Background.fadeFullRes(this)" onerror="this.style.display='none'"/>
+            <img src class="bgright" id="bgimg2" onload="Background.fadeFullRes(this)" onerror="this.style.display='none'"/>
         </div>
     </body>
 </html>
