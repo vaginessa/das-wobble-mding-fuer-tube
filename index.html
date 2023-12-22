@@ -1,203 +1,200 @@
-<html>
-    <head>
-        <meta charset="UTF-8"/>
-        <title>das wobble mding fuer tube</title>
-        <!-- CDN -->
-        <!-- Font Awesome -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
-        <!-- jQuery -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <!-- jQuery UI -->
-        <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css"/>
-        <!-- Database Wrapper -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/dexie/1.5.1/dexie.min.js"></script>
-        <!-- Semantic OwO -->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.10/semantic.min.css"/>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.10/semantic.min.js"></script>
-        <!-- three.js -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/85/three.min.js"></script>
-        <!-- JsRender -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jsrender/0.9.84/jsrender.min.js"></script>
+ <title>das wackeln mding fuer Rohr</title>
+ <!-- CDN -->
+ <!-- Font Awesome -->
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
+ <!-- jQuery -->
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+ <!-- jQuery UI -->
+ <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css"/>
+ <!-- Datenbank-Wrapper -->
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/dexie/1.5.1/dexie.min.js"></script>
+ <!-- Semantische OwO -->
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.10/semantic.min.css"/>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.10/semantic.min.js"></script>
+ <!-- three.js -->
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/85/three.min.js"></script>
+ <!-- JsRender -->
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/jsrender/0.9.84/jsrender.min.js"></script>
 
 
-        <!-- templates -->
-        <script id="table-row-template" type="text/html">
-            <tr class="song-row" data-songid="{{:id}}">
-                <td class="db-song-control">
-                    <div><a onclick="Database.handlePlay({{:id}})" class="fa fa-play interactable"></a></div>
-                </td>
-                <td class="row-art"><img width="50px" src="{{>img || './img/art_ph.png'}}"></td>
-                <td class="row-title"><div>{{:title}}</div></td>
-                <td class="row-artist"><div>{{:artist}}</div></td>
-                <td><div>{{:duration}}</div></td>
-                <td class="db-song-control">
-                    <div><a onclick="Database.handleRemove({{:id}})" class="fa fa-trash interactable"></a></div>
-                </td>
-            </tr>
-        </script>
+ <!-- templates -->
+ <script id="table-row-template" type="text/html">
+ <tr class="song-Zeile" Daten-songid="{{id}}">
+ <td class="db-song-control">
+ <div><a onclick="Database.handlePlay({{:id}})" class="fa fa-play-interactable"></a></div>
+</td>
+ <td class="row-art"><img width="50px" src="{{>img -||'. /img/art_ph.png'}}"></td>
+ <td class="row-title"><div>{{:title}}</div></td>
+ <td class="row-artist"><div>{{:artist}}</div></td>
+<td><div>{{:Dauer}}</div></td>
+ <td class="db-song-control">
+ <div><a onclick="Database.handleRemove({{:id}})" class="fa fa-trash-interactable"></a></div>
+</td>
+</tr>
+</script>
 
-        <!-- Local -->
-        <!-- Styles -->
-        <link rel="stylesheet" type="text/css" href="./css/main.css"/>
-        <link rel="stylesheet" type="text/css" href="./css/gui.css"/>
-        <link rel="stylesheet" type="text/css" href="./css/background.css"/>
-        <!-- audio -->
-        <script src="./js/audio/nodes.js"></script>
-        <!-- math -->
-        <script src="./js/math/math_constants.js"></script>
-        <script src="./js/math/transform.js"></script>
-        <!-- misc -->
-        <script src="./js/misc/callbacks.js"></script>
-        <script src="./js/misc/config.js"></script>
-        <script src="./js/misc/util.js"></script>
-        <script src="./js/misc/database.js"></script>
-        <script src="./js/misc/id3-minimized.js"></script>
-        <script src="./js/misc/io_handler.js"></script>
-        <!-- model -->
-        <script src="./js/model/particle_data.js"></script>
-        <script src="./js/model/priority.js"></script>
-        <script src="./js/model/song.js"></script>
-        <!-- visual -->
-        <script src="./js/visual/background.js"></script>
-        <!-- visual/emblem -->
-        <script src="./js/visual/drawn/canvas.js"></script>
-        <script src="./js/visual/drawn/emblem.js"></script>
-        <script src="./js/visual/drawn/spectrum.js"></script>
-        <!-- visual/gl -->
-        <script src="./js/visual/gl/lighting.js"></script>
-        <script src="./js/visual/gl/particles.js"></script>
-        <script src="./js/visual/gl/renderer.js"></script>
-        <script src="./js/visual/gl/scene.js"></script>
-        <script src="./js/visual/gl/shaders.js"></script>
-        <!-- visual/gui -->
-        <script src="./js/visual/gui/audio_wrap.js"></script>
-        <script src="./js/visual/gui/gui_wrapper.js"></script>
-        <!-- root -->
-        <script src="./js/main.js"></script>
-    </head>
-    <body>
-        <div id="gui-full" class="overlay-container">
-            <div class="vert-cen overlay-window" id="gui-full-holder">
-                <div class="absolute-center overlay-pane" id="controls">
-                    <div id="db-prev" class="page-control interactable fa fa-chevron-circle-left" onClick="Database.prevPage()" title="Previous page"></div>
-                    <div id="db-next" class="page-control interactable fa fa-chevron-circle-right" onClick="Database.nextPage()" title="Next page"></div>
-                    <div onClick="GuiWrapper.closeGui();" class="boxclose fa fa-times-circle interactable"></div>
-                    <div class="ui fluid action input inverted">
-                        <input type="text" readonly value="Select Audio File"/>
-                        <input accept="audio/*" type="file" id="fileSelector"/>
-                        <div id="upload-button" class="ui icon button interactable">
-                            <span class="fa fa-plus"></span>
-                        </div>
-                    </div>
-                    <table class="ui selectable inverted table" id="db-view" border="1"></table>
-                    <div id="db-page-info">Page ??/??</div>
-                    <div id="db-input">
-                        <div class="ui input">
-                            <input type="text" id="field-artist" placeholder="Artist" disabled/>
-                        </div>
-                        <div class="ui input">
-                            <input type="text" id="field-title" placeholder="Title" disabled/>
-                        </div>
-                    </div>
-                    <div id="db-controls">
-                        <button class="ui button interactable" id="add2DB" disabled>Add To Library</button>
-                        <button class="ui button interactable" id="viewDB">Refresh Library</button>
-                        <button class="ui button interactable" id="delDB">Delete Library</button>
-                    </div>
-                </div>
-            </div>
-        </div>
+ <!-- Local -->
+ <!-- Styles -->
+ <link rel="stylesheet" type="text/css" href="./css/main.css"/>
+ <link rel="stylesheet" type="text/css" href="./css/gui.css"/>
+ <link rel="stylesheet" type="text/css" href="./css-hintergrund.css"/>
+ <!-- audio -->
+ <script src="./js/audio/nodes.js"></script>
+ <!-- math -->
+ <script src="./js/math/math_constants.js"></script>
+ <script src="./js/math/transform.js"></script>
+ <!-- misc -->
+ <script src="./js/misc/callbacks.js"></script>
+ <script src="./js/misc/config.js"></script>
+ <script src="./js/misc/util.js"></script>
+ <script src="./js/misc/database.js"></script>
+ <script src="./js/misc/id3-minimized.js"></script>
+ <script src="./js/misc/io_handler.js"></script>
+ <!-- model -->
+ <script src="./js/model/particle_data.js"></script>
+ <script src="./js/model/priority.js"></script>
+ <script src="./js/model/song.js"></script>
+ <!-- visual -->
+ <script src="./js/visual/background.js"></script>
+ <!-- visual/Wappen -->
+ <script src="./js/visual/drawn/canvas.js"></script>
+ <script src="./js/visual/drawn/emblem.js"></script>
+ <script src="./js/visual/drawn/spectrum.js"></script>
+ <!-- visual/gl -->
+ <script src="./js/visual/gl/lighting.js"></script>
+ <script src="./js/visual/gl/particles.js"></script>
+ <script src="./js/visual/gl/renderer.js"></script>
+ <script src="./js/visual/gl/scene.js"></script>
+ <script src="./js/visual/gl/shaders.js"></script>
+ <!-- visual/gui -->
+ <script src="./js/visual/gui/audio_wrap.js"></script>
+ <script src="./js/visual/gui/gui_wrapper.js"></script>
+ <!-- root -->
+ <script src="./js/main.js"></script>
+</head>
+<body>
+ <div id="gui-full" class="overlay-container">
+ <div class="vert-cen-overlay-window" id="gui-full-holder">
+ <div class="absolute-center-overlay-pane" id="controls">
+ <div id="db-prev" class="page-control-interactable fa fa-chevron-circle-left" onClick="Database.prevPage()" title="Vorherige Seite"></div>
+ <div id="db-next" class="page-control-interactable fa fa-chevron-circle-right" onClick="Database.nextPage()" title="Nächste Seite"></div>
+ <div onClick="GuiWrapper.closeGui();" class="boxclose fa fa-times-circle interactable"></div>
+ <div class="ui fluid action-Eingang invertiert">
+ <input type="text" readonly value="Select Audio File"/>
+ <input accept="audio/*" type="file" id="Auswahlfenster"/>
+ <div id="upload-button" class="ui-icon-button interactable">
+ <span class="fa fa-plus"></span>
+</div>
+</div>
+ <table class="ui-selectable invertiert Tisch" id="db-view" border="1"></table>
+ <div id="db-page-info"> " Seite ??/??</div>
+ <div id="db-Eingabe">
+ <div class="ui-input">
+ <input type="text" id="field-Künstler" placeholder="Artist" disabled/>
+</div>
+ <div class="ui-input">
+ <input type="text" id="field-title" placeholder="Title" disabled/>
+</div>
+</div>
+ <div id="db-controls">
+ <button class="ui-button-interactable" id="add2DB" disabled>Zur Bibliothek Hinzufügen</button>
+ <button class="ui-button-interactable" id="viewDB">Bibliothek aktualis</button>
+ <button class="ui-button-interactable" id="delDB">Bibliothek Löschen</button>
+</div>
+</div>
+</div>
+</div>
 
-        <div id="about-full" class="overlay-container">
-            <div class="vert-cen overlay-window" id="about-full-holder">
-                <div class="absolute-center overlay-pane" id="about-pane">
-                    <div onClick="GuiWrapper.closeAbout();" class="boxclose fa fa-times-circle interactable"></div>
-                    <div id="about-header"></div><div> <div><span class="fa fa-heart">&nbsp;</span><_marker></_marker><div id="about-header"></div></div>
-                        <div>&nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  </div>
-                        <hr/>
-                        <div>
-                            hotkeys
-                        </div>
-                        <div id="about-hotkeys">
-                            f — flip background
-                            <br/>
-                            g — toggle spectrum glow
-                            <br/>
-                            space — play/pause
-                            <br/>
-                            escape — close overlay
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+ <div id="about-full" class="overlay-container">
+ <div class="vert-cen-overlay-window" id="about-full-holder">
+ <div class="absolute-center-overlay-pane" id="about-pane">
+ <div onClick="GuiWrapper.closeAbout();" class="boxclose fa fa-times-circle interactable"></div>
+ <div id="about-header"></div><div> <div><span class="fa fa-heart">&nbsp;</span><_marker></_marker><div id="about-header"></div></div>
+ <div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </div>
+<hr/>
+<div>
+hotkeys
+</div>
+ <div id="about-hotkeys">
+ f — flip-hintergrund
+<br/>
+ g — toggle-Spektrum-Leuchten
+<br/>
+ space play/pause
+<br/>
+ escape — overlay schließen
+</div>
+</div>
+</div>
+</div>
+</div>
 
-        <div id="welcome-full" class="overlay-container">
-            <div class="vert-cen overlay-window" id="welcome-full-holder">
-                <div class="absolute-center overlay-pane" id="welcome-pane">
-                    <div id="welcome-content">&nbsp;welcome to wobble ding für tube!&nbsp;<br/><br/>
-                        to get started, click &quot;view library&quot; in the bottom-left corner and add a song.
-                    </div>
-                </div>
-            </div>
-        </div>
+ <div id="welcome-full" class="overlay-container">
+ <div class="vert-cen-overlay-window" id="welcome-full-holder">
+ <div class="absolute-center-overlay-pane" id="welcome-pane">
+ <div id="welcome-content">&nbsp;willkommen zu wackeln ding für Rohr!&nbsp;<br/><br/>
+ um loszulegen, klicken Sie auf "anzeigen-Bibliothek" in der unteren linken Ecke und fügen Sie ein Lied.
+</div>
+</div>
+</div>
+</div>
 
-        <div id="welcome-noauto-container" class="overlay-container">
-            <div class="vert-cen overlay-window" id="welcome-noauto-holder">
-                <div class="absolute-center overlay-pane" id="welcome-noauto-pane">
-                    <div id="welcome-noauto-content">
-                        welcome to js.nation!
-                        <br/><br/>
-                        autoplay is disabled in your browser! click &quot;view library&quot; and select a song to begin.
-                    </div>
-                </div>
-            </div>
-        </div>
+ <div id="welcome-noauto-container" class="overlay-container">
+ <div class="vert-cen-overlay-window" id="welcome-noauto-holder">
+ <div class="absolute-center-overlay-pane" id="welcome-noauto-pane">
+ <div id="welcome-noauto-content">
+ willkommen im js.nation!
+<br/><br/>
+ autoplay ist in Ihrem browser deaktiviert! klicken Sie auf "anzeigen-Bibliothek", und wählen Sie ein Lied zu beginnen.
+</div>
+</div>
+</div>
+</div>
 
-        <div class="flex gui-part" id="gui-top">
-            <div id="song-info">
-                <div id="gui-artist"></div>
-                <div id="gui-title"></div>
-            </div>
-        </div>
+ <div class="flex-gui-Teil" id="gui-top">
+ <div id="song-info">
+ <div id="gui-artist"></div>
+ <div id="gui-Titel"></div>
+</div>
+</div>
 
-        <div class="flex gui-part" id="gui-bottom">
-            <!-- Left -->
-            <button class="ui button inverted transparent interactable" onClick="GuiWrapper.openGui();" id="view-database">View Library</button>
-            <!-- Center -->
-            <div class="flex" id="audio-player">  
-                <div class="flex main-controls">
-                    <span id="previous" class="fa fa-step-backward interactable" onClick="Database.playPrevSong()"></span>
-                    <span id="play" class="fa fa-pause action interactable"></span>
-                    <span id="next" class="fa fa-step-forward action interactable" onClick="Database.playNextSong()"></span>
-                    <span id="shuffle" class="fa fa-random action interactable" onClick="Database.toggleShuffle()"></span>
-                </div>
-                <span id="time" class="time">00:00</span>
-                <progress id="progressbar" class="flex-auto interactable" value="0" max="100"></progress>
-                <span id="mute" class="fa fa-volume-up interactable"></span>
-                <progress id="volume" class="flex-auto interactable" value="100" max="100"></progress></div>
-		
-		<p></p>
-		<p>based on js.nation by&nbsp; <a href="//caseif.net">caseif</a> &amp; 
-                            <a href="http://incept.online">incept</a></p><div class="flex">
-            </div>
-            <audio id="audio" onended="Database.playNextSong()"></audio>
-            <!-- Right -->
-            <div id="elm-about">
-                <a href="javascript:GuiWrapper.openAbout();">About</a>
-            </div>
-        </div>
+ <div class="flex-gui-Teil" id="gui-bottom">
+ <!-- Links -->
+ <button class="ui-button invertiert transparent interactable" onClick="GuiWrapper.openGui();" id="view-Datenbank"> "Ansicht" Bibliothek</button>
+ <!-- Center -->
+ <div class="flex" id="audio-player"> 
+ <div class="flex-main-controls">
+ <span id="previous" class="fa fa-step-backward-interactable" onClick="Database.playPrevSong()"></span>
+ <span id="play" class="fa fa-pause-action interactable"></span>
+ <span id="next" class="fa fa-step-forward-Aktion interactable" onClick="Database.playNextSong()"></span>
+ <span id="shuffle" class="fa fa-random action interactable" onClick="Database.toggleShuffle()"></span>
+</div>
+ <span id="time" class="time">00:00</span>
+ <progress id="progressbar" class="flex-auto-interactable" value="0" max="100"></progress>
+ <span id="mute" class="fa fa-volume-up "interactable"></span>
+ <progress id="volume" class="flex-auto-interactable" value="100" max="100"></progress></div>
 
-        <div id="content">
-            <canvas id="canvas" style="display: block;"></canvas>
-        </div>
-        <div id="background" class="lazyaf">
-            <img src class="bgleft" id="limg1" onerror="this.style.display='none'"/>
-            <img src class="bgright" id="limg2" onerror="this.style.display='none'"/>
-        </div>
-        <div id="background" class="realbg">
-            <img src class="bgleft" id="bgimg1" onload="Background.fadeFullRes(this)" onerror="this.style.display='none'"/>
-            <img src class="bgright" id="bgimg2" onload="Background.fadeFullRes(this)" onerror="this.style.display='none'"/>
-        </div>
-    </body>
+<p></p>
+ <p>basierend auf js.nation&nbsp; <a href="//caseif.net">caseif</a> &amp; 
+ <a href="http://incept.online">incept</a></p><div class="flex">
+</div>
+ <audio id="audio" onended="Database.playNextSong()"></audio>
+ <!-- Rechts -->
+ <div id="elm-info">
+ <a href="javascript:GuiWrapper.openAbout();">About</a>
+</div>
+</div>
+
+ <div id="content">
+ <canvas id="canvas" style="display: block;"></canvas>
+</div>
+ <div id="background" class="lazyaf">
+ <img src class="bgleft" id="limg1" onerror="this.Stil.display='none'"/>
+ <img src class="bgright" id="limg2" onerror="this.Stil.display='none'"/>
+</div>
+ <div id="background" class="realbg">
+ <img src class="bgleft" id="bgimg1" onload="Hintergrund.fadeFullRes(this)" onerror="this.Stil.display='none'"/>
+ <img src class="bgright" id="bgimg2" onload="Hintergrund.fadeFullRes(this)" onerror="this.Stil.display='none'"/>
+</div>
+</body>
 </html>
